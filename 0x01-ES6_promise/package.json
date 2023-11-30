@@ -2,7 +2,6 @@
   "name": "promises",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint",
