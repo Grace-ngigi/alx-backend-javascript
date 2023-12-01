@@ -14,12 +14,12 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       console.log(`data${data}`);
       return data.map((result) => ({
         // console.log("result" + result)
-        status: Promise.status,
+        status: "resolved",
         value: result,
       }));
     })
     .catch((error) => [{
-      status: Promise.status,
+      status: "rejected",
       value: error,
     }]);
 }
