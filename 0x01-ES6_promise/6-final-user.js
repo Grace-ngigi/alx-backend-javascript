@@ -11,23 +11,20 @@ import uploadPhoto from './5-photo-reject';
 export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.all([signUpUser(firstName, lastName), uploadPhoto(fileName)])
     .then((data) => {
-      console.log(`data${data}`);
-      return data.map((result) => ({
-        // console.log("result" + result)
-        status: "resolved",
-        value: result,
-      }));
-    })
-    .catch((error) => [{
-      status: "rejected",
-      value: error,
-    }]);
+      const result = [];
+      data.forEach((item) => {
+        if (item.status === 'fulfilled') {
+          result.push({
+            status: item.status,
+            value: item.value,
+          });
+        } else {
+          result.push({
+            status: item.status,
+            value: `${item.reason}`,
+          });
+        }
+      });
+      return result;
+    });
 }
-
-// [
-//     {
-//       status: status_of_the_promise,
-//       value: value or error returned by the Promise
-//     },
-//     ...
-//   ]
