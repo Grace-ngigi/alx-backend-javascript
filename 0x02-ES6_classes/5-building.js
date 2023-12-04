@@ -1,6 +1,11 @@
+import { timingSafeEqual } from "crypto";
+
 export default class Building {
   constructor(sqft) {
     this._sqft = sqft;
+    if (this.constructor !== Building && this.evacuationWarningMessage === undefined){
+      throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
   }
 
   get sqft() {
@@ -12,6 +17,5 @@ export default class Building {
   }
 
   evacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
   }
 }
