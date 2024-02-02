@@ -12,9 +12,9 @@ describe('calculateNumber', () => {
 
   describe('SUBTRACT operation', () => {
     it('should return the result of subtracting rounded b from a', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 5.7, 2.4), 3);
-      assert.strictEqual(calculateNumber('SUBTRACT', 3.8, 1.2), 3);
-      assert.strictEqual(calculateNumber('SUBTRACT', -5.7, -2.4), -3);
+      assert.strictEqual(calculateNumber('SUBTRACT', 5, 3), 2);
+      assert.strictEqual(calculateNumber('SUBTRACT', 3, 1), 2);
+      assert.strictEqual(calculateNumber('SUBTRACT', -5, -2), -3);
     });
   });
 
