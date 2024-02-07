@@ -32,21 +32,21 @@ function countStudents(path) {
 }
 
 const app = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain')
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
 
   if (req.url === '/') {
     res.write('Hello Holberton School!\n');
     res.end();
   } else if (req.url === '/students') {
-    response.write('This is the list of our students\n');
+    res.write('This is the list of our students\n');
     countStudents(process.argv[2].toString()).then((output) => {
-        const outString = output.slice(0, -1);
-        response.end(outString);
-      }).catch(() => {
-        response.statusCode = 404;
-        response.end('Cannot load the database');
-      });
+      const outString = output.slice(0, -1);
+      res.end(outString);
+    }).catch(() => {
+      res.statusCode = 404;
+      res.end('Cannot load the database');
+    });
   } else {
     res.end('404 Not Found\n');
   }
@@ -54,6 +54,5 @@ const app = http.createServer((req, res) => {
 
 const PORT = 1245;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
 module.exports = app;
